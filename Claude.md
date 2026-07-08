@@ -36,18 +36,26 @@ Többnyelvű megjelenítés, zászlóval történő kiválasztás, kezdetben ENG
 	Lábléc
 	Dokumentum törzs hivatkozással a USERS és CARS táblák celláira, formázással
 
-Főképernyőn 5 nagy méretű ikon:
-	Szerződés (dokumentum kézfogással ikon)
-	Sablonok
-	Autók
-	Bérlők
-	Beállítások (fogaskerék ikon)
+Főképernyőn középen 5 nagy méretű ikon:
+	A: Szerződés (dokumentum kézfogással ikon)
+	B: Sablonok
+	C: Autók
+	D: Bérlők
+	E: Beállítások (fogaskerék ikon)
+Főképernyőn 2db kisméretű ikon jobb felső sarokban:
+	Dark/light mód
+	Nyelvválasztás
 
-Szerződés
+A: Szerződés
 	Itt először kiválasztja a bérlőt - ha nincs a listában, itt is hozzá tudja adni későbbre (ugyanaz a beviteli felület legyen, mint a USERS CREATE esetén). Fontos: a USERS listából csak név alapján lehet kiválasztani (adatvédelmi okokból, mert a szerkesztés közben a bérlő látja a WEBUI-t!)
 	Bérlő után autó kiválasztása
 	Majd sablon kiválasztása
 	Ha minden ki lett választva, a sablonba átkerülnek a USERS és CARS adatok a megfelelő mezőkbe és itt még lehet a dokumentum törzsében bármit módosítani!
 
+B: Sablonok
+	Kiválasztás után az adott sablon szerkeszthető
 
-	
+C: Autók: táblázatos formátumban szerkeszthető CRUD
+D: Bérlők: táblázatos formátumban szerkeszthető CRUD
+E: Beállítások: itt lehet a teljes konfigurációt menteni és betölteni (a konfigurációs állományok böngészőhöz vannak társítva, így biztosítjuk a hordozhatóságot, pl. gépváltás esetén)
+
