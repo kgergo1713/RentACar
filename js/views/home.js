@@ -11,11 +11,11 @@ const tiles = [
 
 export function render(container) {
   container.innerHTML = `
-    <div class="home-grid">
+    <div class="home-pentagon">
       ${tiles
         .map(
-          (tile) => `
-        <button type="button" class="home-tile" data-route="${tile.route}" title="${t(tile.descKey)}">
+          (tile, idx) => `
+        <button type="button" class="home-tile home-tile--${idx}" data-route="${tile.route}" title="${t(tile.descKey)}">
           ${icons[tile.icon]}
           <span>${t(tile.labelKey)}</span>
         </button>`

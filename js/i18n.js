@@ -120,6 +120,8 @@ const dict = {
     dark: "Sötét",
     exportConfig: "Konfiguráció exportálása",
     importConfig: "Konfiguráció importálása",
+    exportImportInfo:
+      "Minden adat (bérlők, autók, sablonok) kizárólag ebben a böngészőben, a géped tárhelyén van eltárolva - nincs szerver, nincs felhő. Ha új gépre vagy másik böngészőre váltasz, böngésző-adatok törlésekor, vagy egyszerűen biztonsági mentést szeretnél készíteni, exportáld a konfigurációt egy .json fájlba, majd az új helyen importáld vissza. Így az adataid biztonságban és hordozhatóak maradnak.",
     resetConfig: "Alaphelyzet (összes adat törlése)",
     resetConfirmMsg: "Ez törli az összes bérlőt, autót és sablont ezen a böngészőn. Biztosan folytatod?",
     importSuccess: "Konfiguráció sikeresen betöltve.",
@@ -241,6 +243,8 @@ const dict = {
     dark: "Dark",
     exportConfig: "Export configuration",
     importConfig: "Import configuration",
+    exportImportInfo:
+      "All data (renters, cars, templates) is stored only in this browser, on your own device - there is no server, no cloud. If you switch to a new computer or a different browser, clear your browser data, or simply want a backup, export the configuration to a .json file and import it back later. This keeps your data safe and portable.",
     resetConfig: "Reset (delete all data)",
     resetConfirmMsg: "This deletes all renters, cars and templates in this browser. Continue?",
     importSuccess: "Configuration imported successfully.",

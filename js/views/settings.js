@@ -38,6 +38,7 @@ export function render(container) {
 
     <div class="settings-section">
       <h3>${t("exportConfig")} / ${t("importConfig")}</h3>
+      <p class="empty-hint" style="text-align:left;padding:0 0 12px;">${t("exportImportInfo")}</p>
       <div class="settings-row">
         <button type="button" class="btn" id="btn-export">${icons.download}${t("exportConfig")}</button>
         <button type="button" class="btn" id="btn-import">${icons.upload}${t("importConfig")}</button>

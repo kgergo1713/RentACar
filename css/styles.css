@@ -110,16 +110,20 @@ button, input, select, textarea {
   margin: 0 0 18px;
 }
 
-/* ===== Home screen ===== */
-.home-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 24px;
-  max-width: 820px;
-  margin: 40px auto;
+/* ===== Home screen: 5 tiles placed on the vertices of a pentagon ===== */
+.home-pentagon {
+  position: relative;
+  width: min(90vw, 560px);
+  aspect-ratio: 1 / 1;
+  margin: 30px auto 10px;
 }
 
 .home-tile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 155px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,14 +132,14 @@ button, input, select, textarea {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 32px 16px;
+  padding: 28px 14px;
   cursor: pointer;
   box-shadow: var(--shadow);
   transition: transform 0.12s ease, border-color 0.12s ease;
 }
 
 .home-tile:hover {
-  transform: translateY(-3px);
+  transform: translate(-50%, -50%) translateY(-3px);
   border-color: var(--primary);
 }
 
@@ -145,6 +149,29 @@ button, input, select, textarea {
   font-weight: 600;
   font-size: 1.02rem;
   text-align: center;
+}
+
+/* Pentagon vertex positions, starting at top, clockwise. */
+.home-tile--0 { top: 8%; left: 50%; }
+.home-tile--1 { top: 37%; left: 89.9%; }
+.home-tile--2 { top: 84%; left: 74.7%; }
+.home-tile--3 { top: 84%; left: 25.3%; }
+.home-tile--4 { top: 37%; left: 10.1%; }
+
+@media (max-width: 560px) {
+  .home-pentagon {
+    width: 100%;
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .home-tile {
+    position: static;
+    transform: none;
+    width: auto;
+  }
+  .home-tile:hover { transform: none; }
 }
 
 /* ===== Toolbar / actions ===== */
