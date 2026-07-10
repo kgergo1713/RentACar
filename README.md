@@ -14,6 +14,17 @@ Manage car rental contracts: maintain renters (people/companies) and a car fleet
 - No external network calls at runtime (privacy: renter data must never leave the device). No CDN dependency for core functionality.
 - All persistent state lives in `localStorage` under a single key; see [js/storage.js](js/storage.js). Settings screen provides full export (download JSON) / import (upload JSON) so a user can move their data between machines/browsers.
 - UI must support **light/dark theme** and **HU (default) / EN** language, both toggleable from two small icon buttons top-right on every screen.
+- App version is a single constant in [js/version.js](js/version.js), shown in the Settings screen's About section — bumped manually alongside a git tag on release, no build-time injection needed.
+
+## Setup / run locally
+
+No install, no build. Any static file server works; a helper script is provided:
+
+```powershell
+./scripts/start-local.ps1
+```
+
+This serves the repo root on `http://localhost:8000` (via `python -m http.server`) and opens it in the default browser. Equivalent manual command: `python -m http.server 8000`.
 
 ## Screens / navigation
 
@@ -74,7 +85,11 @@ js/views/users.js       Users CRUD (person/company form incl. company renters mu
 js/views/cars.js        Cars CRUD
 js/views/templates.js   Templates CRUD (logo upload, header/footer/body editor, extraFields editor)
 js/views/contract.js    4-step wizard + print
-js/views/settings.js    language/theme, export/import/reset config
+js/views/settings.js    language/theme, export/import/reset config, About section
+js/version.js           single source of truth for the app version (semver)
+img/contract.png        Contract nav tile icon (raster, replaces the inline SVG)
+scripts/start-local.ps1 local static file server + opens the browser
+LICENSE                 MIT
 ```
 
 ## Status
@@ -86,7 +101,9 @@ js/views/settings.js    language/theme, export/import/reset config
 - [x] `app.js` router
 - [x] Views: `home`, `users`, `cars`, `templates`, `contract`, `settings`
 - [x] Local smoke test (served via `python -m http.server`, exercised in browser: car/user/company CRUD, contract wizard merge, theme toggle, language toggle, settings screen) — all passed, no console errors
-- [ ] Push to `https://github.com/kgergo1713/RentACar` (main branch) — **only after local validation is confirmed**
+- [x] Pushed to `https://github.com/kgergo1713/RentACar` (main branch), deployed via GitHub Pages on a custom domain (see `CNAME`)
+- [x] Version constant (`js/version.js`) + About section (version, feedback email, Revolut support link) in Settings
+- [x] `LICENSE` (MIT)
 
 ### Not yet implemented / known gaps
 - Templates view: rich formatting in the body (currently plain text with `{{...}}` tokens only, no bold/tables).
@@ -100,3 +117,13 @@ js/views/settings.js    language/theme, export/import/reset config
 - Fuel type values are normalized to uppercase at input time, not just on display.
 - Don't add a persisted "contracts" table unless explicitly requested — the spec only defines 3 CRUD entities (Users, Cars, Templates); generated contracts are ephemeral/print-only.
 - Local validation before pushing to GitHub is required (see Status checklist).
+- Version bumps: update `js/version.js`, commit, then create an annotated git tag `vX.Y.Z` — no build/CI step involved.
+
+## License
+
+[MIT](LICENSE)
+
+## Feedback & support
+
+- Feedback / bug reports: [kgergo1713@gmail.com](mailto:kgergo1713@gmail.com)
+- Support the project: [Revolut](https://revolut.me/kgergo1713)

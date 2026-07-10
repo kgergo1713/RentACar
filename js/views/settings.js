@@ -1,6 +1,7 @@
 import { t, getLang } from "../i18n.js";
 import { icons } from "../icons.js";
 import { downloadFile, readFileAsText } from "../utils.js";
+import { VERSION } from "../version.js";
 import {
   getData,
   getSettings,
@@ -52,6 +53,19 @@ export function render(container) {
       <div class="settings-row">
         <button type="button" class="btn btn-danger" id="btn-reset">${icons.reset}${t("resetConfig")}</button>
       </div>
+    </div>
+
+    <div class="settings-section">
+      <h3>${t("about")}</h3>
+      <p class="empty-hint" style="text-align:left;padding:0 0 8px;">RentACar &mdash; ${t("aboutVersion")} ${VERSION}</p>
+      <p class="empty-hint" style="text-align:left;padding:0 0 4px;">
+        ${t("aboutFeedbackHint")}<br>
+        <a href="mailto:kgergo1713@gmail.com">${t("aboutFeedback")}: kgergo1713@gmail.com</a>
+      </p>
+      <p class="empty-hint" style="text-align:left;padding:0;">
+        ${t("aboutSupportHint")}<br>
+        <a href="https://revolut.me/kgergo1713" target="_blank" rel="noopener noreferrer">${t("aboutSupport")}: Revolut</a>
+      </p>
     </div>
   `;
 

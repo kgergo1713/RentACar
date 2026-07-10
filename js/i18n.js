@@ -126,6 +126,14 @@ const dict = {
     resetConfirmMsg: "Ez törli az összes bérlőt, autót és sablont ezen a böngészőn. Biztosan folytatod?",
     importSuccess: "Konfiguráció sikeresen betöltve.",
     importError: "Hibás fájl, nem sikerült importálni.",
+
+    // About
+    about: "Névjegy",
+    aboutVersion: "Verzió",
+    aboutFeedback: "Visszajelzés",
+    aboutFeedbackHint: "Hibát találtál, vagy javaslatod van? Írj emailt.",
+    aboutSupport: "Támogatás",
+    aboutSupportHint: "Ha hasznosnak találod az alkalmazást, egy kávéval támogathatod a fejlesztést.",
   },
   en: {
     appName: "RentACar",
@@ -249,6 +257,14 @@ const dict = {
     resetConfirmMsg: "This deletes all renters, cars and templates in this browser. Continue?",
     importSuccess: "Configuration imported successfully.",
     importError: "Invalid file, import failed.",
+
+    // About
+    about: "About",
+    aboutVersion: "Version",
+    aboutFeedback: "Feedback",
+    aboutFeedbackHint: "Found a bug or have a suggestion? Send an email.",
+    aboutSupport: "Support",
+    aboutSupportHint: "If you find this app useful, you can support development with a coffee.",
   },
 };
 
