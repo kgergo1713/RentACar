@@ -15,7 +15,7 @@ Manage car rental contracts: maintain renters (people/companies) and a car fleet
 - All persistent state lives in `localStorage` under a single key; see [js/storage.js](js/storage.js). Settings screen provides full export (download JSON) / import (upload JSON) so a user can move their data between machines/browsers.
 - UI must support **light/dark theme** and **HU (default) / EN** language, both toggleable from two small icon buttons top-right on every screen.
 - App version is a single constant in [js/version.js](js/version.js), shown in the Settings screen's About section — bumped manually alongside a git tag on release, no build-time injection needed.
-- Installable as a PWA ([manifest.json](manifest.json)): opens in standalone/fullscreen mode when added to the home screen (no browser chrome). [sw.js](sw.js) is a minimal network-first service worker — it always fetches the latest deployed files when online (bypassing the browser's own HTTP cache heuristics, which previously could show a stale version on mobile) and only falls back to its cache when offline. Bump the `CACHE_NAME` version string in `sw.js` alongside `js/version.js` on each release so old caches get cleared.
+- Installable as a PWA ([manifest.json](manifest.json)): `display: "minimal-ui"` (not full standalone/fullscreen by default, so the browser's own UI/menu stays reachable - a fully chromeless standalone mode can make "Add to Home Screen" hard to find again on some mobile browsers). An explicit install icon button next to the theme toggle (wired to `beforeinstallprompt` in [js/app.js](js/app.js)) lets users add the app to their home screen reliably, without depending on the browser's own install prompt timing. [sw.js](sw.js) is a minimal network-first service worker — it always fetches the latest deployed files when online (bypassing the browser's own HTTP cache heuristics, which previously could show a stale version on mobile) and only falls back to its cache when offline. Bump the `CACHE_NAME` version string in `sw.js` alongside `js/version.js` on each release so old caches get cleared.
 
 ## Setup / run locally
 
@@ -95,7 +95,7 @@ js/views/templates.js   Templates CRUD (logo upload, header/footer/body editor, 
 js/views/contract.js    4-step wizard + print
 js/views/settings.js    language/theme, export/import/reset config, About section
 js/version.js           single source of truth for the app version (semver)
-manifest.json           PWA manifest (installable, standalone/fullscreen display)
+manifest.json           PWA manifest (installable, minimal-ui display, not full standalone by default)
 sw.js                    network-first service worker (always fetches latest version when online)
 img/app-icon.svg        app favicon (custom car icon on a colored rounded square)
 img/contract.png        Contract nav tile icon (raster, replaces the inline SVG)
@@ -119,7 +119,7 @@ LICENSE                 MIT
 - [x] Home screen nav icons colored per section; branding footer (Gerisoft wordmark + version); custom app favicon (`img/app-icon.svg`)
 - [x] Default car fleet seeded from `SampleCarList.md` (62 vehicles); default contract template rewritten to mirror `SampleDocument.jpg`
 - [x] Settings "Restore defaults" clearly reloads the shipped default car fleet + contract template (clears renters/custom edits in this browser)
-- [x] Default fictitious renters seeded (`defaultUsers()`); PWA support (`manifest.json` + `sw.js`) for standalone/fullscreen install and automatic updates
+- [x] Default fictitious renters seeded (`defaultUsers()`); PWA support (`manifest.json` + `sw.js`) for minimal-ui install and automatic updates; explicit install icon button in the topbar
 
 ### Not yet implemented / known gaps
 - Templates view: rich formatting in the body (currently plain text with `{{...}}` tokens only, no bold/tables).

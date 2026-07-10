@@ -4,7 +4,7 @@
   "description": "Client-side car rental management app.",
   "start_url": ".",
   "scope": ".",
-  "display": "standalone",
+  "display": "minimal-ui",
   "orientation": "any",
   "background_color": "#f5f6fa",
   "theme_color": "#2563eb",

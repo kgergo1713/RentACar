@@ -45,6 +45,10 @@ function updateTopbar(route) {
   const langBtn = document.getElementById("btn-lang");
   langBtn.innerHTML = getLang() === "hu" ? flagEn : flagHu;
   langBtn.title = getLang() === "hu" ? "English" : "Magyar";
+
+  const installBtn = document.getElementById("btn-install");
+  installBtn.title = t("installApp");
+  installBtn.setAttribute("aria-label", t("installApp"));
 }
 
 function init() {
@@ -68,9 +72,39 @@ function init() {
     render();
   });
 
+  const installBtn = document.getElementById("btn-install");
+  installBtn.innerHTML = icons.install;
+  installBtn.addEventListener("click", async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    installBtn.classList.add("hidden");
+  });
+
   window.addEventListener("hashchange", render);
   render();
 }
+
+// Manual "install app" icon button: browsers only show their own install UI opportunistically
+// (and hide it entirely once launched standalone), so we surface an explicit in-app control -
+// this is what lets a user reliably add the app to their home screen instead of getting stuck.
+let deferredInstallPrompt = null;
+const isStandalone =
+  window.matchMedia("(display-mode: standalone)").matches || window.matchMedia("(display-mode: minimal-ui)").matches;
+
+if (!isStandalone) {
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    document.getElementById("btn-install")?.classList.remove("hidden");
+  });
+}
+
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  document.getElementById("btn-install")?.classList.add("hidden");
+});
 
 // Network-first service worker: ensures the app always fetches the latest deployed version
 // when online (see sw.js), instead of relying on the browser's own HTTP cache heuristics.

@@ -27,6 +27,7 @@ export const icons = {
   upload: svg(`<path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/>`),
   download: svg(`<path d="M12 4v12M7 11l5 5 5-5"/><path d="M4 20h16"/>`),
   reset: svg(`<path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M5 13a7 7 0 0 1 12-4.5L20 10M19 11a7 7 0 0 1-12 4.5L4 14"/>`),
+  install: svg(`<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 6v7"/><path d="M9 10l3 3 3-3"/><path d="M9 18h6"/>`),
 };
 
 export const flagHu = `<svg viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#ce2939"/><rect y="10.67" width="24" height="5.33" fill="#477050"/></svg>`;
