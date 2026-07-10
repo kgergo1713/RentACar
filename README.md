@@ -139,6 +139,66 @@ LICENSE                 MIT
   `tab-size` — this keeps the printed contract compact enough to fit one A4 page. Keep this pairing
   style when editing the default template; long free-text fields (address, notes) stay on their own line.
 
+## Changelog
+
+### v1.4.0
+
+**New Feature**
+- Explicit install icon button in the topbar (wired to `beforeinstallprompt`), hidden when already running standalone/minimal-ui.
+
+**Modified**
+- PWA display switched from full standalone to `minimal-ui` so the browser's own menu (and "Add to Home Screen") stays reachable on all devices.
+
+### v1.3.4
+
+**Modified**
+- Default extra-field values seeded (damages, vehicle value, fuel level) instead of empty placeholders.
+
+**Fixed**
+- Fuel-type-only warning line highlighting on the printed contract.
+
+### v1.3.3
+
+**Modified**
+- Default contract lessor changed to the real company (KIADÓAUTÓ Kft.).
+
+### v1.3.2
+
+**Modified**
+- Fictitious lessor header text, Ft/km amounts formatted with thousands separators, tighter renter/car field layout.
+
+**Fixed**
+- Header/footer line breaks in the printed contract.
+
+### v1.3.1
+
+**Fixed**
+- Contract print layout compacted to fit one A4 page (paired two-column fields, tighter print CSS, portrait page size).
+
+### v1.3.0
+
+**New Feature**
+- Fictitious default renters seeded on first run.
+- PWA manifest with install support and a network-first service worker for automatic updates.
+
+### v1.2.0
+
+**New Feature**
+- Colored edit/delete action icons across all CRUD views.
+
+**Modified**
+- Restore-defaults behavior clarified; default contract template rewritten to mirror the reference sample document.
+
+### v1.1.0
+
+**New Feature**
+- Colored home screen navigation icons, Gerisoft branding footer, custom app favicon.
+
+### v1.0.0
+
+**New Feature**
+- Initial release: Users/Cars/Templates CRUD, contract wizard, HU/EN i18n, light/dark theme, localStorage persistence, version display and About section, LICENSE.
+
 ## License
 
 [MIT](LICENSE)
