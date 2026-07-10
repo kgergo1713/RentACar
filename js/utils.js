@@ -36,6 +36,17 @@ export function resolvePath(obj, path) {
   return path.split(".").reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : ""), obj);
 }
 
+// Format a number with space-separated thousands groups (e.g. 30000 -> "30 000"), Hungarian style.
+// Non-numeric/empty values are returned unchanged so free-text fields aren't affected.
+export function formatThousands(value) {
+  if (value === "" || value === null || value === undefined) return "";
+  const num = Number(value);
+  if (Number.isNaN(num)) return String(value);
+  const sign = num < 0 ? "-" : "";
+  const intStr = Math.trunc(Math.abs(num)).toString();
+  return sign + intStr.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
 // Replace {{a.b}} tokens in a string using the given context object.
 export function fillTemplate(str, context) {
   if (!str) return "";

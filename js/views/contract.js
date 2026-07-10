@@ -1,6 +1,6 @@
 import { t, getLang } from "../i18n.js";
 import { icons } from "../icons.js";
-import { escapeHtml, fillTemplate } from "../utils.js";
+import { escapeHtml, fillTemplate, formatThousands } from "../utils.js";
 import { getUsers, getCars, getTemplates } from "../state.js";
 import { openUserForm } from "./users.js";
 
@@ -52,12 +52,16 @@ function buildContext() {
       cargoDoors: car.cargoDoors || "",
       size: car.size || "",
       plate: car.plate || "",
-      deposit: car.deposit ?? "",
-      dailyRate: car.dailyRate ?? "",
+      deposit: formatThousands(car.deposit),
+      dailyRate: formatThousands(car.dailyRate),
       fuelType: car.fuelType || "",
       notes: car.notes || "",
     },
-    extra: wizard.extraValues,
+    extra: {
+      ...wizard.extraValues,
+      odometerReading: formatThousands(wizard.extraValues.odometerReading),
+      vehicleValue: formatThousands(wizard.extraValues.vehicleValue),
+    },
   };
 }
 
@@ -254,14 +258,31 @@ function extraFieldInputHtml(field) {
 function renderStepReview(container) {
   const tpl = wizard.template;
 
+  // Renders filled template text as line-blocks instead of raw pre-wrapped text: lines containing
+  // tab characters become a tight flex row of columns (e.g. "Név: X\tTelefon: Y"), so paired fields
+  // sit neatly side by side instead of relying on monospace tab-stop spacing.
+  function renderDocText(text) {
+    return text
+      .split("\n")
+      .map((line) => {
+        if (line === "") return `<div class="doc-line doc-line-blank">&nbsp;</div>`;
+        if (line.includes("\t")) {
+          const cols = line.split("\t").map((part) => `<span>${escapeHtml(part)}</span>`);
+          return `<div class="doc-line doc-row">${cols.join("")}</div>`;
+        }
+        return `<div class="doc-line">${escapeHtml(line)}</div>`;
+      })
+      .join("");
+  }
+
   function renderDoc() {
     const ctx = buildContext();
     return `
       <div class="contract-doc" id="contract-doc">
         ${tpl.logo ? `<img class="logo" src="${tpl.logo}" alt="">` : ""}
-        ${tpl.header ? `<div class="doc-header" contenteditable="true">${escapeHtml(fillTemplate(tpl.header, ctx))}</div>` : ""}
-        <div class="doc-body" contenteditable="true">${escapeHtml(fillTemplate(tpl.body, ctx))}</div>
-        ${tpl.footer ? `<div class="doc-footer" contenteditable="true">${escapeHtml(fillTemplate(tpl.footer, ctx))}</div>` : ""}
+        ${tpl.header ? `<div class="doc-header" contenteditable="true">${renderDocText(fillTemplate(tpl.header, ctx))}</div>` : ""}
+        <div class="doc-body" contenteditable="true">${renderDocText(fillTemplate(tpl.body, ctx))}</div>
+        ${tpl.footer ? `<div class="doc-footer" contenteditable="true">${renderDocText(fillTemplate(tpl.footer, ctx))}</div>` : ""}
       </div>
     `;
   }

@@ -7,11 +7,12 @@ function defaultTemplate() {
     id: uuid(),
     name: "Alap bérleti szerződés",
     logo: "",
-    header: "[Bérbeadó cégneve] ([cím], adószám: [.], cégjegyzékszám: [.], tel.: [.]), mint Bérbeadó",
+    header:
+      "RentACar Bérbeadó Kft. (1052 Budapest, Váci utca 10., adószám: 87654321-2-42, cégjegyzékszám: 01-09-123456, tel.: +36 1 234 5678), mint Bérbeadó",
     footer:
-      "Kelt: ________________________, ______________________\n\n\n" +
-      "_____________________________                    _____________________________\n" +
-      "Bérbeadó                                                        Bérbevevő",
+      "Kelt: ________________________, ______________________\n\n" +
+      "_____________________________\t_____________________________\n" +
+      "Bérbeadó\tBérbevevő",
     body:
       "BÉRLETI SZERZŐDÉS\n" +
       "A fenti Bérbeadó és az alábbi Bérbevevő között a mai napon az alábbi feltételekkel jött létre:\n\n" +
