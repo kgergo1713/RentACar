@@ -8,7 +8,7 @@ function defaultTemplate() {
     name: "Alap bérleti szerződés",
     logo: "",
     header:
-      "RentACar Bérbeadó Kft. (1052 Budapest, Váci utca 10., adószám: 87654321-2-42, cégjegyzékszám: 01-09-123456, tel.: +36 1 234 5678), mint Bérbeadó",
+      "KIADÓAUTÓ Kft., székhely: 2536, Nyergesújfalu, Sánc Dűlő 77., adószám: 24780153-2-11, cégjegyzékszám: 11-09-022298, tel.: +36-20-9360-568, mint Bérbeadó",
     footer:
       "Kelt: ________________________, ______________________\n\n" +
       "_____________________________\t_____________________________\n" +
