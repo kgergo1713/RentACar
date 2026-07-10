@@ -242,6 +242,7 @@ button, input, select, textarea {
 }
 
 .btn:hover { background: var(--surface-2); }
+.btn svg { width: 16px; height: 16px; display: inline-block; flex-shrink: 0; }
 
 .btn-primary {
   background: var(--primary);
@@ -256,6 +257,23 @@ button, input, select, textarea {
 }
 
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.btn-icon:hover { background: var(--surface-2); }
+.btn-icon svg { width: 18px; height: 18px; display: block; }
+.btn-icon-edit svg { color: #f97316; } /* orange pencil */
+.btn-icon-delete svg { color: #dc2626; } /* red trash */
 
 .search-input, input[type="text"], input[type="number"], input[type="tel"],
 input[type="date"], input[type="datetime-local"], select, textarea {

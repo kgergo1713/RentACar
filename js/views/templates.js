@@ -208,8 +208,8 @@ export function render(container) {
         <td>${tpl.logo ? `<img src="${tpl.logo}" alt="" style="max-height:32px">` : ""}</td>
         <td>${escapeHtml(tpl.name)}</td>
         <td class="row-actions">
-          <button type="button" class="btn" data-action="edit" data-id="${tpl.id}">${icons.edit}</button>
-          <button type="button" class="btn btn-danger" data-action="delete" data-id="${tpl.id}">${icons.trash}</button>
+          <button type="button" class="btn-icon btn-icon-edit" data-action="edit" data-id="${tpl.id}" title="${t("edit")}" aria-label="${t("edit")}">${icons.edit}</button>
+          <button type="button" class="btn-icon btn-icon-delete" data-action="delete" data-id="${tpl.id}" title="${t("delete")}" aria-label="${t("delete")}">${icons.trash}</button>
         </td>
       </tr>`
       )

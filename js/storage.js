@@ -7,11 +7,14 @@ function defaultTemplate() {
     id: uuid(),
     name: "Alap bérleti szerződés",
     logo: "",
-    header: "",
+    header: "[Bérbeadó cégneve] ([cím], adószám: [.], cégjegyzékszám: [.], tel.: [.]), mint Bérbeadó",
     footer:
-      "A Bérbevevő a gépjárművet rendeltetésszerűen köteles használni. A jármű nem rendelkezik CASCO biztosítással, az esetleges károkért a Bérbevevő teljes anyagi felelősséggel tartozik.",
+      "Kelt: ________________________, ______________________\n\n\n" +
+      "_____________________________                    _____________________________\n" +
+      "Bérbeadó                                                        Bérbevevő",
     body:
-      "Amely létrejött a Bérbeadó, valamint az alábbi Bérbevevő között:\n\n" +
+      "BÉRLETI SZERZŐDÉS\n\n" +
+      "A fenti Bérbeadó és az alábbi Bérbevevő között a mai napon az alábbi feltételekkel jött létre:\n\n" +
       "Név: {{renter.name}}\n" +
       "Cím: {{renter.address}}\n" +
       "Telefon: {{renter.phone}}\n" +
@@ -19,20 +22,41 @@ function defaultTemplate() {
       "Születési hely, idő: {{renter.birthPlace}}, {{renter.birthDate}}\n" +
       "Személyi igazolvány szám: {{renter.idNumber}}\n" +
       "Jogosítvány szám: {{renter.licenseNumber}}\n\n" +
-      "Bérbeadó a Bérbevevő rendelkezésére bocsátja az alábbi gépjárművet:\n\n" +
+      "Cég esetén továbbá:\n" +
+      "Cégnév: {{company.companyName}}\n" +
+      "Székhely: {{company.registeredOffice}}\n" +
+      "Cégjegyzékszám: {{company.companyRegNumber}}\n" +
+      "Adószám: {{company.taxNumber}}\n\n" +
+      "Mint Bérbevevő, a fentiek szerint. Bérbeadó a Bérbevevő rendelkezésére bocsátja meghatározott időtartamra az alábbi gépkocsit:\n\n" +
       "Típus: {{car.make}} {{car.bodyType}}\n" +
       "Rendszám: {{car.plate}}\n" +
+      "Kilométeróra állás: {{extra.odometerReading}} km\n" +
       "Üzemanyag: {{car.fuelType}}\n" +
       "Szállítható személyek száma: {{car.seats}}\n\n" +
       "Sérülések: {{extra.damages}}\n" +
-      "Üzemanyagszint átadáskor: {{extra.fuelLevel}}%\n" +
-      "Bérlés várható időtartama: {{extra.rentalDurationDays}} nap\n" +
-      "Átadás dátuma, ideje: {{extra.handoverDateTime}}\n\n" +
+      "Üzemanyagszint átadáskor: {{extra.fuelLevel}}%\n\n" +
+      "Felek a gépkocsi átadásakor a gépkocsit közösen szemrevételezték, a Bérbeadó tájékoztatta a Bérbevevőt annak jelenlegi sérüléseiről, hibáiról, amit a Bérbevevő tudomásul vett. A Bérbevevő kötelezi magát arra, hogy a gépkocsit rendeltetésszerűen használja, megóvja annak állapotát, és az esetlegesen előforduló műszaki hiba vagy baleset esetén azonnal értesíti a Bérbeadót. Tudomásul veszi, hogy amennyiben a gépkocsin a bérleti időtartam alatt bárminemű rongálást vagy kárt okoz, köteles azt megtéríteni; ez az összeg a letéti díjból levonásra kerül. A Bérbevevő tudomásul veszi, hogy a gépkocsin nincs CASCO biztosítás, így saját hibás baleset esetén teljes anyagi felelősséggel tartozik az autóért, melynek mértéke: {{extra.vehicleValue}} Ft.\n\n" +
+      "A gépkocsit az átadáskor feljegyzett üzemanyagszinttel kérjük vissza! A gépjármű csak {{car.fuelType}} üzemanyaggal tankolható!\n\n" +
+      "A Bérbevevő felelősséggel tartozik a bérleti időtartam alatt előforduló közlekedési szabálysértésekért (gyorshajtás, piros lámpa, parkolási büntetés stb.). Tudomásul veszi, hogy ha a Bérbeadót később ilyen ügyekkel kapcsolatban a hatóságok megkeresik, a Bérbeadó kiadhatja a Bérbevevő személyes adatait, és a Bérbevevő köteles a büntetéseket kifizetni. Továbbá köteles betartani a magyarországi fizetős utakra vonatkozó szabályokat; ha a fizetős úthasználattal kapcsolatban probléma merül fel (pótdíj fizetési kötelezettség), az ezzel kapcsolatos költségek a Bérbevevőt terhelik, illetve amennyiben autópálya-matricát vásárolt, ennek bizonylatát köteles átadni a Bérbeadónak.\n\n" +
+      "A gépkocsival a külföldre történő utazás NEM ENGEDÉLYEZETT!\n\n" +
+      "Bérlés várható időtartama: {{extra.rentalDurationDays}} nap.   Átadva: {{extra.handoverDateTime}}   Visszahozva: {{extra.returnDateTime}}\n\n" +
       "Bérleti díj: {{car.dailyRate}} Ft/nap\n" +
       "Letét összege: {{car.deposit}} Ft",
     extraFields: [
       { key: "damages", label: { hu: "Sérülések", en: "Damages" }, type: "text", default: "" },
       { key: "fuelLevel", label: { hu: "Üzemanyagszint", en: "Fuel level" }, type: "range10", default: 100 },
+      {
+        key: "odometerReading",
+        label: { hu: "Kilométeróra állás", en: "Odometer reading" },
+        type: "number",
+        default: "",
+      },
+      {
+        key: "vehicleValue",
+        label: { hu: "Gépkocsi értéke (felelősség mértéke, Ft)", en: "Vehicle value (liability amount)" },
+        type: "number",
+        default: "",
+      },
       {
         key: "rentalDurationDays",
         label: { hu: "Bérlés várható időtartama (nap)", en: "Expected rental duration (days)" },
@@ -44,6 +68,12 @@ function defaultTemplate() {
         label: { hu: "Átadás dátuma, ideje", en: "Handover date & time" },
         type: "datetime-local",
         default: nowLocalDateTimeValue(),
+      },
+      {
+        key: "returnDateTime",
+        label: { hu: "Visszahozás dátuma, ideje", en: "Return date & time" },
+        type: "datetime-local",
+        default: "",
       },
     ],
   };

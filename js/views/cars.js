@@ -141,8 +141,8 @@ export function render(container) {
         <td>${escapeHtml(c.dailyRate)}</td>
         <td>${escapeHtml(c.fuelType)}</td>
         <td class="row-actions">
-          <button type="button" class="btn" data-action="edit" data-id="${c.id}">${icons.edit}</button>
-          <button type="button" class="btn btn-danger" data-action="delete" data-id="${c.id}">${icons.trash}</button>
+          <button type="button" class="btn-icon btn-icon-edit" data-action="edit" data-id="${c.id}" title="${t("edit")}" aria-label="${t("edit")}">${icons.edit}</button>
+          <button type="button" class="btn-icon btn-icon-delete" data-action="delete" data-id="${c.id}" title="${t("delete")}" aria-label="${t("delete")}">${icons.trash}</button>
         </td>
       </tr>`
       )

@@ -192,8 +192,8 @@ export function render(container) {
         <td>${escapeHtml(displayName(u))}</td>
         <td>${u.type === "company" ? t("company") : t("person")}</td>
         <td class="row-actions">
-          <button type="button" class="btn" data-action="edit" data-id="${u.id}">${icons.edit}</button>
-          <button type="button" class="btn btn-danger" data-action="delete" data-id="${u.id}">${icons.trash}</button>
+          <button type="button" class="btn-icon btn-icon-edit" data-action="edit" data-id="${u.id}" title="${t("edit")}" aria-label="${t("edit")}">${icons.edit}</button>
+          <button type="button" class="btn-icon btn-icon-delete" data-action="delete" data-id="${u.id}" title="${t("delete")}" aria-label="${t("delete")}">${icons.trash}</button>
         </td>
       </tr>`
       )

@@ -52,14 +52,17 @@ Discriminated by `type: 'person' | 'company'`.
 - `company`: `companyName, registeredOffice, companyRegNumber, taxNumber, renters: [personId, ...]` — the actual signer(s) must be natural persons, referenced from existing `person`-type entries in the same `users[]` list (a company can have multiple).
 
 ### Car — `cars[]`
-`category: 'passenger' | 'cargo'`, `make` (brand, e.g. FORD), `bodyType` (e.g. sedan/kombi/platós/dobozos), `seats`, `cargoDoors`, `size`, `deposit`, `dailyRate`, `plate`, `fuelType` (**always stored/displayed uppercase**), `notes`.
+`category: 'passenger' | 'cargo'`, `make` (brand, e.g. FORD), `bodyType` (e.g. sedan/kombi/platós/dobozos), `seats`, `cargoDoors`, `size`, `deposit`, `dailyRate`, `plate`, `fuelType` (**always stored/displayed uppercase**), `notes`. Seeded by default with 62 vehicles transcribed from [SampleCarList.md](SampleCarList.md) (42 passenger, 10 vans, 8 trucks, 2 trailers) — see `defaultCars()` in [js/storage.js](js/storage.js).
 
 ### Template — `templates[]`
-`name`, `logo` (base64 data URL, uploaded image), `header` (free text/HTML), `footer` (free text/HTML), `body` (free text with `{{path.to.field}}` placeholder tokens resolved against the merge context below), `extraFields[]` — editable list of ad-hoc fields filled in per-contract, seeded with:
+`name`, `logo` (base64 data URL, uploaded image), `header` (free text/HTML — intended for the lessor/own-company letterhead), `footer` (free text/HTML — intended for the Kelt/signature block), `body` (free text with `{{path.to.field}}` placeholder tokens resolved against the merge context below, modeled after [SampleDocument.jpg](SampleDocument.jpg)), `extraFields[]` — editable list of ad-hoc fields filled in per-contract, seeded with:
 - `damages` (text)
 - `fuelLevel` (0–100, step 10)
+- `odometerReading` (number)
+- `vehicleValue` (number — liability amount if the renter is at fault, no CASCO)
 - `rentalDurationDays` (number)
 - `handoverDateTime` (datetime-local)
+- `returnDateTime` (datetime-local)
 
 ### Contract merge context (not persisted as its own CRUD table)
 Built at wizard step 4 from the selected renter + car + template + extra field values:
@@ -108,6 +111,8 @@ LICENSE                 MIT
 - [x] Version constant (`js/version.js`) + About section (version, feedback email, Revolut support link) in Settings
 - [x] `LICENSE` (MIT)
 - [x] Home screen nav icons colored per section; branding footer (Gerisoft wordmark + version); custom app favicon (`img/app-icon.svg`)
+- [x] Default car fleet seeded from `SampleCarList.md` (62 vehicles); default contract template rewritten to mirror `SampleDocument.jpg`
+- [x] Settings "Restore defaults" clearly reloads the shipped default car fleet + contract template (clears renters/custom edits in this browser)
 
 ### Not yet implemented / known gaps
 - Templates view: rich formatting in the body (currently plain text with `{{...}}` tokens only, no bold/tables).
