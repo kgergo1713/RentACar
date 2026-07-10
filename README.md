@@ -134,6 +134,10 @@ LICENSE                 MIT
 - Don't add a persisted "contracts" table unless explicitly requested — the spec only defines 3 CRUD entities (Users, Cars, Templates); generated contracts are ephemeral/print-only.
 - Local validation before pushing to GitHub is required (see Status checklist).
 - Version bumps: update `js/version.js`, commit, then create an annotated git tag `vX.Y.Z` — no build/CI step involved.
+- The contract template body pairs short fields on the same line with a `\t` (tab) separator (e.g.
+  `Név: {{renter.name}}\tTelefon: {{renter.phone}}`) to render as aligned two-column rows via CSS
+  `tab-size` — this keeps the printed contract compact enough to fit one A4 page. Keep this pairing
+  style when editing the default template; long free-text fields (address, notes) stay on their own line.
 
 ## License
 

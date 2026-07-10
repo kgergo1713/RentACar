@@ -454,7 +454,7 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
 
 .contract-doc img.logo { max-height: 70px; margin-bottom: 12px; }
 .contract-doc .doc-header, .contract-doc .doc-footer { color: var(--text-muted); font-size: 0.9rem; }
-.contract-doc .doc-body { white-space: pre-wrap; margin: 18px 0; }
+.contract-doc .doc-body { white-space: pre-wrap; margin: 18px 0; tab-size: 24; -moz-tab-size: 24; }
 
 .extra-fields-grid {
   display: grid;
@@ -477,7 +477,18 @@ table.data-table tbody tr:hover { background: var(--surface-2); }
 
 /* ===== Print ===== */
 @media print {
+  @page { size: portrait; margin: 12mm; }
   .topbar, .toolbar, .wizard-steps, .no-print { display: none !important; }
   body, #app, .view { background: #fff !important; color: #000 !important; }
-  .contract-doc { border: none; box-shadow: none; padding: 0; }
+  .view { padding: 0 !important; }
+  .contract-doc {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+  .contract-doc img.logo { max-height: 45px; margin-bottom: 6px; }
+  .contract-doc .doc-header, .contract-doc .doc-footer { font-size: 0.72rem; }
+  .contract-doc .doc-body { margin: 8px 0; }
 }
