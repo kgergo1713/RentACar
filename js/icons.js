@@ -4,9 +4,7 @@ const svg = (inner, viewBox = "0 0 24 24") =>
   `<svg viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
 
 export const icons = {
-  contract: svg(
-    `<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9 12h1.5a1.5 1.5 0 0 1 0 3H9"/><path d="M9 15l1 3"/><path d="M13 13l2.5 2.5L20 11"/>`
-  ),
+  contract: `<img src="img/contract.png" alt="" class="icon-img">`,
   templates: svg(`<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9 11h6M9 14h6M9 17h4"/>`),
   cars: svg(
     `<path d="M4 16l1.5-5A2 2 0 0 1 7.4 9.5h9.2A2 2 0 0 1 18.5 11L20 16"/><rect x="2.5" y="16" width="19" height="4" rx="1.2"/><circle cx="7" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/>`

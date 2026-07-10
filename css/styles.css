@@ -144,6 +144,8 @@ button, input, select, textarea {
 }
 
 .home-tile svg { width: 48px; height: 48px; color: var(--primary); }
+.home-tile img.icon-img { width: 48px; height: 48px; object-fit: contain; }
+:root[data-theme="dark"] .home-tile img.icon-img { filter: invert(1); }
 
 .home-tile span {
   font-weight: 600;
