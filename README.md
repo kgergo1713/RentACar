@@ -32,13 +32,14 @@ Home screen: 5 large icon buttons with one-line tooltip descriptions, centered:
 
 | Icon | Screen | Notes |
 |---|---|---|
-| A | Contract (Szerződés) | wizard: select renter → select car → select template → review/edit merged contract → print |
-| B | Templates (Sablonok) | CRUD |
-| C | Cars (Autók) | CRUD |
-| D | Renters/Users (Bérlők) | CRUD |
-| E | Settings (Beállítások) | export/import/reset full config, language, theme |
+| A | Contract (Szerződés) | wizard: select renter → select car → select template → review/edit merged contract → print, green icon |
+| B | Templates (Sablonok) | CRUD, orange icon |
+| C | Cars (Autók) | CRUD, blue icon |
+| D | Renters/Users (Bérlők) | CRUD, red icon |
+| E | Settings (Beállítások) | export/import/reset full config, language, theme, gray icon |
 
-Top-right (every screen): theme toggle (light/dark), language toggle (HU/EN, flag icons).
+Top-right (every screen): theme toggle (light/dark), language toggle (HU/EN, flag icons). Bottom of the
+home screen: a small Gerisoft branding footer (theme-aware wordmark logo + current app version).
 
 **Privacy rule:** in the Contract wizard's renter-selection step, the picker must show **name only** (no other personal fields), because the renter may be looking at the screen while the operator selects/edits.
 
@@ -87,7 +88,9 @@ js/views/templates.js   Templates CRUD (logo upload, header/footer/body editor, 
 js/views/contract.js    4-step wizard + print
 js/views/settings.js    language/theme, export/import/reset config, About section
 js/version.js           single source of truth for the app version (semver)
+img/app-icon.svg        app favicon (custom car icon on a colored rounded square)
 img/contract.png        Contract nav tile icon (raster, replaces the inline SVG)
+img/gerisoft-wordmark-light.png / -dark.png  theme-aware branding logo (home screen footer)
 scripts/start-local.ps1 local static file server + opens the browser
 LICENSE                 MIT
 ```
@@ -104,6 +107,7 @@ LICENSE                 MIT
 - [x] Pushed to `https://github.com/kgergo1713/RentACar` (main branch), deployed via GitHub Pages on a custom domain (see `CNAME`)
 - [x] Version constant (`js/version.js`) + About section (version, feedback email, Revolut support link) in Settings
 - [x] `LICENSE` (MIT)
+- [x] Home screen nav icons colored per section; branding footer (Gerisoft wordmark + version); custom app favicon (`img/app-icon.svg`)
 
 ### Not yet implemented / known gaps
 - Templates view: rich formatting in the body (currently plain text with `{{...}}` tokens only, no bold/tables).
