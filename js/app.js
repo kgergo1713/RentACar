@@ -72,4 +72,12 @@ function init() {
   render();
 }
 
+// Network-first service worker: ensures the app always fetches the latest deployed version
+// when online (see sw.js), instead of relying on the browser's own HTTP cache heuristics.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch((err) => console.error("SW registration failed", err));
+  });
+}
+
 init();

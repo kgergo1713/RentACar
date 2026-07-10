@@ -1,0 +1,32 @@
+// RentACar service worker.
+// Network-first strategy: always tries the network first so users get the latest deployed
+// version automatically; falls back to the cache only when offline. On activate, old caches
+// from previous versions are deleted. Bump CACHE_NAME on release alongside js/version.js.
+const CACHE_NAME = "rentacar-cache-v1.3.0";
+
+self.addEventListener("install", () => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+      .then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
+  );
+});

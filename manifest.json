@@ -1,0 +1,15 @@
+{
+  "name": "RentACar",
+  "short_name": "RentACar",
+  "description": "Client-side car rental management app.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f6fa",
+  "theme_color": "#2563eb",
+  "lang": "hu",
+  "icons": [
+    { "src": "img/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

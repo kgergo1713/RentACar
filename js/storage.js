@@ -221,10 +221,61 @@ export function defaultCars() {
   return [...passengerCars, ...vans, ...trucks, ...trailers].map((car) => ({ id: uuid(), ...car }));
 }
 
+// Seed renters with fictitious example data, so the app isn't empty on first run and the
+// Contract wizard / company-renters relationship can be tried out immediately.
+export function defaultUsers() {
+  const person1 = {
+    id: uuid(),
+    type: "person",
+    name: "Kovács János",
+    address: "1011 Budapest, Fő utca 12.",
+    phone: "+36 20 123 4567",
+    motherName: "Kovács Jánosné (Tóth Mária)",
+    birthPlace: "Budapest",
+    birthDate: "1985-04-12",
+    idNumber: "123456AB",
+    licenseNumber: "AB123456",
+  };
+  const person2 = {
+    id: uuid(),
+    type: "person",
+    name: "Nagy Éva",
+    address: "6720 Szeged, Kossuth Lajos sugárút 5.",
+    phone: "+36 30 234 5678",
+    motherName: "Nagy Éváné (Kiss Anna)",
+    birthPlace: "Szeged",
+    birthDate: "1990-09-23",
+    idNumber: "234567BC",
+    licenseNumber: "BC234567",
+  };
+  const person3 = {
+    id: uuid(),
+    type: "person",
+    name: "Szabó Péter",
+    address: "4024 Debrecen, Piac utca 22.",
+    phone: "+36 70 345 6789",
+    motherName: "Szabó Péterné (Varga Ilona)",
+    birthPlace: "Debrecen",
+    birthDate: "1978-01-30",
+    idNumber: "345678CD",
+    licenseNumber: "CD345678",
+  };
+  const company1 = {
+    id: uuid(),
+    type: "company",
+    companyName: "Minta Kereskedelmi Kft.",
+    registeredOffice: "1052 Budapest, Váci utca 1.",
+    companyRegNumber: "01-09-999999",
+    taxNumber: "12345678-2-42",
+    renters: [person1.id],
+  };
+  return [person1, person2, person3, company1];
+}
+
 export function defaultData() {
   return {
     settings: { lang: "hu", theme: "light" },
-    users: [],
+    users: defaultUsers(),
     cars: defaultCars(),
     templates: [defaultTemplate()],
   };
