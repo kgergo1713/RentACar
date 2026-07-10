@@ -193,6 +193,31 @@ button, input, select, textarea {
   .home-tile:hover { transform: none; }
 }
 
+/* ===== Home screen footer: Gerisoft branding + app version ===== */
+.brand-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px auto 10px;
+  opacity: 0.75;
+}
+
+.brand-footer .wordmark {
+  height: 22px;
+  width: auto;
+  display: none;
+}
+
+:root[data-theme="light"] .brand-footer .wordmark-light { display: block; }
+:root[data-theme="dark"] .brand-footer .wordmark-dark { display: block; }
+
+.brand-footer-version {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ===== Toolbar / actions ===== */
 .toolbar {
   display: flex;

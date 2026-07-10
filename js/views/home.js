@@ -1,5 +1,6 @@
 import { t } from "../i18n.js";
 import { icons } from "../icons.js";
+import { VERSION } from "../version.js";
 
 const tiles = [
   { route: "contract", icon: "contract", labelKey: "nav_contract", descKey: "nav_contract_desc" },
@@ -22,6 +23,12 @@ export function render(container) {
         )
         .join("")}
     </div>
+
+    <footer class="brand-footer">
+      <img src="img/gerisoft-wordmark-light.png" alt="Gerisoft" class="wordmark wordmark-light">
+      <img src="img/gerisoft-wordmark-dark.png" alt="Gerisoft" class="wordmark wordmark-dark">
+      <span class="brand-footer-version">v${VERSION}</span>
+    </footer>
   `;
 
   container.querySelectorAll(".home-tile").forEach((btn) => {
