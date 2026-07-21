@@ -98,6 +98,10 @@ js/version.js           single source of truth for the app version (semver)
 manifest.json           PWA manifest (installable, minimal-ui display, not full standalone by default)
 sw.js                    network-first service worker (always fetches latest version when online)
 img/app-icon.svg        app favicon (custom car icon on a colored rounded square)
+img/app-icon-192.png, -512.png, -180.png, -32.png  rasterized PNG versions of app-icon.svg for the
+                         PWA manifest and apple-touch-icon - iOS Safari does not rasterize SVG for
+                         apple-touch-icon, and older Android/Chrome versions are unreliable with SVG
+                         manifest icons, so real home-screen icon support needs PNGs alongside the SVG.
 img/contract.png        Contract nav tile icon (raster, replaces the inline SVG)
 img/gerisoft-wordmark-light.png / -dark.png  theme-aware branding logo (home screen footer)
 scripts/start-local.ps1 local static file server + opens the browser
@@ -140,6 +144,16 @@ LICENSE                 MIT
   style when editing the default template; long free-text fields (address, notes) stay on their own line.
 
 ## Changelog
+
+### v1.4.1
+
+**Fixed**
+- Home screen / bookmark icon on mobile showed a blank/generic icon instead of the custom app icon:
+  iOS Safari ignores SVG for `apple-touch-icon`, and Android/Chrome's manifest icon resolution is
+  unreliable with SVG-only icon sets. Added rasterized PNGs (`img/app-icon-192.png`, `-512.png`,
+  `-180.png`, `-32.png`) generated from `app-icon.svg`, referenced them in `manifest.json` (192/512)
+  and `index.html` (`apple-touch-icon` now 180px PNG, plus a 32px PNG favicon fallback alongside the
+  existing SVG favicon).
 
 ### v1.4.0
 

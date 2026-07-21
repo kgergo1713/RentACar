@@ -2,7 +2,7 @@
 // Network-first strategy: always tries the network first so users get the latest deployed
 // version automatically; falls back to the cache only when offline. On activate, old caches
 // from previous versions are deleted. Bump CACHE_NAME on release alongside js/version.js.
-const CACHE_NAME = "rentacar-cache-v1.4.0";
+const CACHE_NAME = "rentacar-cache-v1.4.1";
 
 self.addEventListener("install", () => {
   self.skipWaiting();
