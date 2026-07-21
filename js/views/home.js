@@ -25,8 +25,10 @@ export function render(container) {
     </div>
 
     <footer class="brand-footer">
-      <img src="img/gerisoft-wordmark-light.png" alt="Gerisoft" class="wordmark wordmark-light">
-      <img src="img/gerisoft-wordmark-dark.png" alt="Gerisoft" class="wordmark wordmark-dark">
+      <a href="https://geri-soft.com" target="_blank" rel="noopener noreferrer" class="brand-footer-link" aria-label="Gerisoft">
+        <img src="img/gerisoft-wordmark-light.png" alt="Gerisoft" class="wordmark wordmark-light">
+        <img src="img/gerisoft-wordmark-dark.png" alt="Gerisoft" class="wordmark wordmark-dark">
+      </a>
       <span class="brand-footer-version">v${VERSION}</span>
     </footer>
   `;
