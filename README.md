@@ -145,6 +145,12 @@ LICENSE                 MIT
 
 ## Changelog
 
+### v1.6.0
+
+**Modified**
+- Beállítások/Sablonok/Bérlők nav icons thinned (stroke-width 1.1) to visually match the Contract icon's line weight.
+- Cars nav icon and app icon (`app-icon.svg` + generated PNGs) replaced with a cleaner sedan design, matching the same line style.
+
 ### v1.5.0
 
 **Modified**

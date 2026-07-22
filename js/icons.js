@@ -1,19 +1,29 @@
 // Inline SVG icon set (monochrome, stroke = currentColor). No external assets/CDN.
 
-const svg = (inner, viewBox = "0 0 24 24") =>
-  `<svg viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+const svg = (inner, viewBox = "0 0 24 24", strokeWidth = 1.8) =>
+  `<svg viewBox="${viewBox}" fill="none" stroke="currentColor" stroke-width="${strokeWidth}" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
 
 export const icons = {
   contract: `<span class="icon-mask" style="-webkit-mask-image:url(img/contract.png);mask-image:url(img/contract.png);"></span>`,
-  templates: svg(`<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9 11h6M9 14h6M9 17h4"/>`),
+  templates: svg(
+    `<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9 11h6M9 14h6M9 17h4"/>`,
+    "0 0 24 24",
+    1.1
+  ),
   cars: svg(
-    `<path d="M4 16l1.5-5A2 2 0 0 1 7.4 9.5h9.2A2 2 0 0 1 18.5 11L20 16"/><rect x="2.5" y="16" width="19" height="4" rx="1.2"/><circle cx="7" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/>`
+    `<path d="M3.2 15.2c0-.9.7-1.7 1.6-1.8l1.9-.3 2.1-3c.4-.6 1.1-.9 1.8-.9h4.8c.7 0 1.4.3 1.8.9l2.1 3 1.9.3c.9.1 1.6.9 1.6 1.8v2.4h-2.3"/><path d="M5.5 17.6H3.2v-2.4"/><path d="M9 11.2h6"/><circle cx="7.4" cy="17.6" r="1.7"/><circle cx="16.6" cy="17.6" r="1.7"/><path d="M9.1 17.6h5.8"/>`,
+    "0 0 24 24",
+    1.3
   ),
   users: svg(
-    `<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M15.2 14.3c2.4.3 4.3 2.1 4.3 4.7"/>`
+    `<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M15.2 14.3c2.4.3 4.3 2.1 4.3 4.7"/>`,
+    "0 0 24 24",
+    1.1
   ),
   settings: svg(
-    `<circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.6 7.6 0 0 0 .1-2l2-1.5-2-3.5-2.4.6a7.6 7.6 0 0 0-1.7-1L15 3h-6l-.4 2.6a7.6 7.6 0 0 0-1.7 1l-2.4-.6-2 3.5L4.5 11a7.6 7.6 0 0 0 0 2l-2 1.5 2 3.5 2.4-.6c.5.4 1.1.8 1.7 1L9 21h6l.4-2.6c.6-.2 1.2-.6 1.7-1l2.4.6 2-3.5-2.1-1.5z"/>`
+    `<circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.6 7.6 0 0 0 .1-2l2-1.5-2-3.5-2.4.6a7.6 7.6 0 0 0-1.7-1L15 3h-6l-.4 2.6a7.6 7.6 0 0 0-1.7 1l-2.4-.6-2 3.5L4.5 11a7.6 7.6 0 0 0 0 2l-2 1.5 2 3.5 2.4-.6c.5.4 1.1.8 1.7 1L9 21h6l.4-2.6c.6-.2 1.2-.6 1.7-1l2.4.6 2-3.5-2.1-1.5z"/>`,
+    "0 0 24 24",
+    1.1
   ),
   sun: svg(
     `<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>`
