@@ -230,5 +230,5 @@ LICENSE                 MIT
 
 ## Feedback & support
 
-- Feedback / bug reports: [kgergo1713@gmail.com](mailto:kgergo1713@gmail.com)
+- Feedback / bug reports: [info@geri-soft.com](mailto:info@geri-soft.com)
 - Support the project: [Revolut](https://revolut.me/kgergo1713)

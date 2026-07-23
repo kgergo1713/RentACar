@@ -60,7 +60,7 @@ export function render(container) {
       <p class="empty-hint" style="text-align:left;padding:0 0 8px;">RentACar &mdash; ${t("aboutVersion")} ${VERSION}</p>
       <p class="empty-hint" style="text-align:left;padding:0 0 4px;">
         ${t("aboutFeedbackHint")}<br>
-        <a href="mailto:kgergo1713@gmail.com">${t("aboutFeedback")}: kgergo1713@gmail.com</a>
+        <a href="mailto:info@geri-soft.com">${t("aboutFeedback")}: info@geri-soft.com</a>
       </p>
       <p class="empty-hint" style="text-align:left;padding:0;">
         ${t("aboutSupportHint")}<br>
